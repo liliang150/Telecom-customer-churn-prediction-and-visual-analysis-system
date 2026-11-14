@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/node_modules/.vite-temp/
+
+# Runtime data and model artifacts
+data/
+artifacts/
+backups/
+.screenshots/
+*.db
+*.db-journal
+
+# Datasets (large files, not versioned)
+数据集/
+
+# Local environment
+.env
+.env.*
+*.local
+
+# OS
+.DS_Store
+Thumbs.db
