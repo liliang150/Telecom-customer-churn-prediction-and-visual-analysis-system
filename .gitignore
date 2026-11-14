@@ -18,8 +18,8 @@ backups/
 *.db
 *.db-journal
 
-# Datasets (large files, not versioned)
-数据集/
+# Datasets: keep train.csv and test.csv, exclude extra samples
+数据集/2.csv
 
 # Local environment
 .env
