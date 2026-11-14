@@ -1,3 +1,9 @@
+---
+title: Telecom Churn Prediction System
+sdk: docker
+app_port: 7860
+---
+
 # 电信客户流失预测与可视化分析系统
 
 基于 XGBoost 与 SHAP 的电信客户流失预测与可视化分析系统，包含风险总览、重点客户、特征分析、流失预测、数据与模型管理、系统信息六个模块。

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from pathlib import Path
 
@@ -57,6 +58,9 @@ def main(argv: list[str] | None = None) -> int:
             print(f"    模型 {result['version']} 已上线，内部验证集 AUC={result['metrics']['xgboost']['auc']:.4f}", flush=True)
 
         # --- 预测缓存 ---
+        if os.getenv("CHURN_SKIP_CACHE") == "1":
+            print("    CHURN_SKIP_CACHE 已开启，跳过预测缓存生成。", flush=True)
+            return 0
         test_has_data = data_service.test_exists() and len(data_service.test()) > 0
         if not test_has_data:
             print("    test.csv 不存在或为空，跳过预测缓存生成。", flush=True)
