@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy import text
@@ -60,6 +61,7 @@ def create_app() -> FastAPI:
     app.state.batch_service = BatchPredictionJobService(app.state.SessionLocal, app.state.model_store)
     app.state.sensitivity_service = SensitivityJobService(app.state.data_service, app.state.model_store)
     app.state.feature_selection_service = FeatureSelectionJobService(app.state.data_service, app.state.model_store)
+    app.add_middleware(GZipMiddleware, minimum_size=1024)
     app.add_middleware(
         CORSMiddleware,
         allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
